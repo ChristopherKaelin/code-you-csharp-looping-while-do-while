@@ -1,0 +1,35 @@
+Console.WriteLine("\n====================\n");
+
+Random dice = new Random();
+
+int monsterHealth = 10;
+int heroHealth = 10;
+
+Console.WriteLine($"Monster Health: {monsterHealth}");
+Console.WriteLine($"Hero Health: {heroHealth}");
+
+do
+{
+    int heroAttack = dice.Next(1, 10);
+    monsterHealth -= heroAttack;
+    Console.WriteLine($"\nHero attacks.  Monster was damaged and lost {heroAttack} health and now has {monsterHealth} health");
+
+    if (monsterHealth <= 0)
+    {
+        Console.WriteLine("Hero wins!");
+        continue;
+    }
+
+    int monsterAttack = dice.Next(1, 10);
+    heroHealth -= monsterAttack;
+    Console.WriteLine($"Monster attacks.  Hero was damaged and lost {monsterAttack} health and now has {heroHealth} health");
+
+    if (heroHealth <= 0)
+    {
+        Console.WriteLine("Monster wins!");
+        continue;
+    }
+} while (monsterHealth > 0 && heroHealth > 0);
+
+
+Console.WriteLine("\n====================\n");
